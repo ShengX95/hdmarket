@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Guns V3.2
 
 ## 介绍
@@ -166,3 +167,6 @@ jwt token鉴权机制是指若需要请求服务器接口,必须通过AuthContro
 
 ## 曾获荣誉
 ![输入图片说明](https://gitee.com/uploads/images/2017/1015/151932_f1593f87_551203.jpeg "initpintu_副本_副本.jpg")
+=======
+# hdmarket
+>>>>>>> 3707f1cccf513233780f48295af86b16d8cfcca9
