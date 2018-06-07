@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>信用卡管理管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="name" name="名称" />
+                                <#SelectCon id="type" name="类型">
+                                    <option value="" selected>所有</option>
+                                    <option value="1">点击最多</option>
+                                    <option value="2">发款最快</option>
+                                    <option value="3">最新发布</option>
+                                </#SelectCon>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Cdcontent.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="CdcontentTableToolbar" role="group">
+                            @if(shiro.hasPermission("/cdcontent/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="Cdcontent.openAddCdcontent()"/>
+                            @}
+                            @if(shiro.hasPermission("/cdcontent/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="Cdcontent.openCdcontentDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/cdcontent/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="Cdcontent.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="CdcontentTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/cdmrg/cdcontent/cdcontent.js"></script>
+@}

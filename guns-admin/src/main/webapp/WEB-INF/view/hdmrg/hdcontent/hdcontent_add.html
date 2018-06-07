@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <!--<#input id="id" name="" underline="true"/>-->
+                            <#input id="deadline" name="借款期限" underline="true"/>
+                            <#input id="detail" name="贷款介绍" underline="true"/>
+                            <#input id="limitTime" name="借款额度" underline="true"/>
+                            <#input id="rate" name="参考利率"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="title" name="贷款名称" underline="true"/>
+                            <#input id="url" name="跳转url" underline="true"/>
+                            <#input id="showOrder" name="展示顺序" underline="true"/>
+                            <#select id="type" name="类型" underline="true">
+                                <option value="1">最新入驻平台</option>
+                                <option value="2">平台力荐</option>
+                                <option value="3">下款最快</option>
+                            </#select>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="HdcontentInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="HdcontentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/hdmrg/hdcontent/hdcontent_info.js"></script>
+@}

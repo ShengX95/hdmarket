@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.CdcontentMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.Cdcontent">
+        <id column="id" property="id" />
+        <result column="limit_time" property="limitTime" />
+        <result column="detail" property="detail" />
+        <result column="title" property="title" />
+        <result column="url" property="url" />
+        <result column="show_order" property="showOrder" />
+        <result column="type" property="type" />
+        <result column="create_time" property="createTime" />
+        <result column="tourl" property="tourl" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, limit_time AS limitTime, detail, title, url, show_order AS showOrder, type, create_time AS createTime, tourl
+    </sql>
+
+    <sql id="map_Column_List">
+        id, limit_time, detail, title, url, show_order, type, create_time, tourl
+    </sql>
+
+    <select id="selectCdcontentByTypeOrder" resultMap="BaseResultMap">
+        select
+        <include refid="map_Column_List" />
+        FROM sys_cdcontent
+        WHERE type=#{type}
+        ORDER BY show_order
+    </select>
+
+    <select id="selectCdcontent" resultType="map">
+        select
+        <include refid="Base_Column_List" />
+        FROM sys_cdcontent
+        ORDER BY show_order
+    </select>
+
+    <select id="selectCdcontentByNameAndTypeOrder" resultType="map">
+        select
+        <include refid="Base_Column_List" />
+        FROM sys_cdcontent
+        <where>
+            <if test="title != '' and title != null">
+                and title like '%${title}%'
+            </if>
+            <if test="type != '' and type != null">
+                and type = #{type}
+            </if>
+        </where>
+        <choose>
+            <when test="showOrder != null and showOrder != ''">
+                ORDER BY #{showOrder}
+            </when>
+            <otherwise>
+                ORDER BY show_order
+            </otherwise>
+        </choose>
+    </select>
+</mapper>
